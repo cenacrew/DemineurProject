@@ -9,7 +9,7 @@ public class DPartie {
 	
 	public void nouvellePartie(int h, int l, int nb){
 		commence = false;
-		perdu = false;
+//		perdu = false;
 		dm = new DMatrice(h,l,nb);		
 	}
 	
@@ -18,7 +18,7 @@ public class DPartie {
 	}
 	
 	public void commencer(){
-		commence = true;
+//		commence = true;
 	}
 	
 	public boolean gagne(){
@@ -29,9 +29,9 @@ public class DPartie {
 		return dm.aExplose();
 	}
 	
-	public boolean fini(){
-		return(commence && (!perdu()) && (!gagne()));
-	}
+//	public boolean fini(){
+//		return(commence && (!perdu()) && (!gagne()));
+//	}
 
 	
 }
