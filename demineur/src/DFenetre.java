@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import metier.DPartie;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -45,9 +48,9 @@ public class DFenetre extends JFrame {
 	
 	public void connecterPartie(DPartie p){
 		partie = p; 
-		nb_lgn = p.getMatrice().getHauteur();
-		nb_col = p.getMatrice().getLargeur();
-		nb_mines = p.getMatrice().getMines();
+		nb_lgn = p.getHauteur();
+		nb_col = p.getLargeur();
+		nb_mines = p.getMines();
 		
 
 		miseAJourCompteur();
@@ -293,8 +296,8 @@ public class DFenetre extends JFrame {
 	}
 	
 	public void miseAJourCompteur(){
-			int nb = partie.getMatrice().getMines()
-			          -partie.getMatrice().nbrDrapeau();
+			int nb = partie.getMines()
+			          -partie.nbrDrapeau();
 			Integer integer = new Integer(nb);
 			
 			if((nb>9) || (nb<0))

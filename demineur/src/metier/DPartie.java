@@ -1,14 +1,24 @@
-import java.lang.*;
+package metier;
 import java.util.Random;
 
-public class DMatrice{
+public class DPartie {
+	
+	private boolean commence, perdu;
 	
 	private int hauteur, largeur, nbMines; // parametres de la partie
 	private DCase[][] matrice; 
 	private int caseNonMineeRestante;
 	private boolean explosion;
 	
-	public DMatrice(int h, int l, int nb){
+	public DPartie(int h, int l, int nb){
+		nouvellePartie(h,l,nb);
+		
+		
+	}
+	
+	public void nouvellePartie(int h, int l, int nb){
+		commence = false;
+//		perdu = false;
 		hauteur = h;
 		largeur = l;
 		nbMines = nb;
@@ -19,8 +29,25 @@ public class DMatrice{
 			matrice[i][j] = new DCase();
 		miner();
 		preparerAlentour(); 
-		caseNonMineeRestante = hauteur*largeur-nbMines;
+		caseNonMineeRestante = hauteur*largeur-nbMines;		
 	}
+	
+	public void commencer(){
+//		commence = true;
+	}
+	
+	public boolean gagne(){
+		return (getCaseNonMineeRestante()==0);
+	}
+	
+	public boolean perdu(){
+		return aExplose();
+	}
+	
+//	public boolean fini(){
+//		return(commence && (!perdu()) && (!gagne()));
+//	}
+	
 	
 	public DCase getCase(int i, int j)  {
 		try{
@@ -45,7 +72,7 @@ public class DMatrice{
 	
 	public void devoilerCase(int i,int j){
 
-		/* Case découverte */
+		/* Case dï¿½couverte */
 		try{
 			   	matrice[i][j].setDecouverte();
 			   	caseNonMineeRestante--;
@@ -53,14 +80,14 @@ public class DMatrice{
 		catch(ArrayIndexOutOfBoundsException e){  }
 		
 		
-		  /* on regarde si la case est minée */
+		  /* on regarde si la case est minï¿½e */
 		try{
 			  if(matrice[i][j].estMine())
 			  	explosion = true;
 			  else{
 			  
 		  	
-		 		/* propagation éventuelle */
+		 		/* propagation ï¿½ventuelle */
 
 				if(matrice[i][j].getMinesAlentour()==0){
 					
@@ -179,7 +206,7 @@ public class DMatrice{
 					
 		
 				
-						/* les mines ont étés comptés*/
+						/* les mines ont ï¿½tï¿½s comptï¿½s*/
 						matrice[i][j].setMinesAlentour(minesCompteur);								
 					}
 			
@@ -248,5 +275,5 @@ public class DMatrice{
 		}
 	}
 
-
-}
+	
+} 
