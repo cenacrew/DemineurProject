@@ -1,0 +1,5 @@
+package metier;
+
+public enum EtatCase {
+	UN,DEUX,TROIS,QUATRE,CINQ,SIX,SEPT,HUIT,VIDE,INCONNUE,MINE,DRAPEAU,CROIX
+}
