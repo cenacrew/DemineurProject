@@ -10,6 +10,8 @@ public class DPartie {
 	private int caseNonMineeRestante;
 	private boolean explosion;
 	
+	private EtatPartie ep;
+	
 	public DPartie(int h, int l, int nb){
 		nouvellePartie(h,l,nb);
 		
@@ -29,8 +31,21 @@ public class DPartie {
 			matrice[i][j] = new DCase();
 		miner();
 		preparerAlentour(); 
-		caseNonMineeRestante = hauteur*largeur-nbMines;		
+		caseNonMineeRestante = hauteur*largeur-nbMines;	
+		
+		ep = EtatPartie.PASFINI;
+		
+		
 	}
+	
+	public EtatCase getEtatCase(int a,int b) {
+		return getCase(a, b).getEtatCase(ep);
+	}
+	
+	public EtatPartie getEtatPartie() {
+		return (EtatPartie) ep;
+	}
+	
 	
 	public void commencer(){
 //		commence = true;
