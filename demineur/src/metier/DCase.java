@@ -28,7 +28,7 @@ public class DCase{
 		return mimesAlentour;
 	}
 	
-	public boolean yaDrapreau(){
+	public boolean yaDrapeau(){
 		return drapeau;
 	}
 	
@@ -68,49 +68,32 @@ public class DCase{
 	
 	
 	public EtatCase getEtatCase(EtatPartie ep) {
-		if (decouverte) {
-			switch(getMinesAlentour()) {
-			case 0:
-				ec = EtatCase.VIDE;
-				break;
-			case 1:
-				ec = EtatCase.UN;
-				break;
-			case 2:
-				ec = EtatCase.DEUX;
-				break;
-			case 3:
-				ec = EtatCase.TROIS;
-				break;
-			case 4:
-				ec = EtatCase.QUATRE;
-				break;
-			case 5:
-				ec = EtatCase.CINQ;
-				break;
-			case 6:
-				ec = EtatCase.SIX;
-				break;
-			case 7:
-				ec = EtatCase.SEPT;
-				break;
-			case 8:
-				ec = EtatCase.HUIT;
-				break;
-				
+		switch (ep) {
+		case PASFINI:
+            if(yaDrapeau())return EtatCase.DRAPEAU;
+            if(!estDecouverte()) {
+            	if(select()) {
+            		return EtatCase.SELECTION;
+            	}else {
+            		return EtatCase.INCONNUE;
+            	}        	
+            }
+            return EtatCase.DECOUVERTE;
+		case PERDU:
+			if(estMine()) {
+				return EtatCase.MINE;
 			}
-		}
-		if (ep==EtatPartie.PERDU) {
-			if(mine) {
-				ec=EtatCase.MINE;
+			if(!estMine() && yaDrapeau()) {
+				return EtatCase.CROIX;
 			}
-			if(!mine && drapeau) {
-				ec=EtatCase.CROIX;
-			}
+			if(!estDecouverte()) {
+				return EtatCase.INCONNUE;
+            }
+			return EtatCase.DECOUVERTE;		
+		case GAGNE:
+			return EtatCase.DECOUVERTE;
+		
 		}
-		if(drapeau) {
-			ec=EtatCase.DRAPEAU;
-		}
-		return ec;
+		return EtatCase.DECOUVERTE;
 	}
 }

@@ -38,8 +38,8 @@ public class DPartie {
 		
 	}
 	
-	public EtatCase getEtatCase(int a,int b) {
-		return getCase(a, b).getEtatCase(ep);
+	public EtatCase getEtatCase(int i,int j) {
+		return getCase(i, j).getEtatCase(ep);
 	}
 	
 	public EtatPartie getEtatPartie() {
@@ -248,7 +248,7 @@ public class DPartie {
 		int compteur = 0;
 		for(int i=0;i<hauteur;i++)
 			for(int j=0;j<largeur;j++){
-				if(matrice[i][j].yaDrapreau())
+				if(matrice[i][j].yaDrapeau())
 					compteur++;
 			}
 		return compteur;
