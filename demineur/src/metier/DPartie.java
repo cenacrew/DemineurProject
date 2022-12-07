@@ -39,11 +39,13 @@ public class DPartie {
 	}
 	
 	public EtatCase getEtatCase(int i,int j) {
+		if(perdu()) {
+			ep=EtatPartie.PERDU;
+		}
+		if(gagne()) {
+			ep=EtatPartie.GAGNE;
+		}
 		return getCase(i, j).getEtatCase(ep);
-	}
-	
-	public EtatPartie getEtatPartie() {
-		return (EtatPartie) ep;
 	}
 	
 	
@@ -82,6 +84,10 @@ public class DPartie {
 	
 	public int getMines(){
 		return nbMines;
+	}
+	
+	public DCase[][] getMatrice(){
+		return matrice;
 	}
 	
 	

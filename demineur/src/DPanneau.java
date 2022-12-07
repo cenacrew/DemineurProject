@@ -21,7 +21,7 @@ public class DPanneau extends JPanel{
 		super.paintComponent(g);
 		for(int i=0; i<hauteur; i++)
 			for(int j=0;j<largeur; j++){
-				g.drawImage(fenetre.getIcon(i,j).getImage(),j*20,i*20,this);
+				g.drawImage(imageur.getIcon(imageur.getPartie().getEtatCase(i,j),imageur.getPartie().getMatrice()[i][j].getMinesAlentour()).getImage(),j*20,i*20,this);
 			}
 	}	
 }
