@@ -22,18 +22,23 @@ public class DImageur{
 		repertoire = s;
 	}
 	
-	public static ImageIcon getIcon(EtatCase ec){
+	public DPartie getPartie(){
+		return partie;
+	}
+	
+	
+	public static ImageIcon getIcon(EtatCase ec,int nbMine){
 		switch (ec) {
 		case INCONNUE:return new ImageIcon(repertoire+"/Inconnue.GIF");
 		case DRAPEAU:return new ImageIcon(repertoire+"/Drapeau.GIF");
 		case MINE:return new ImageIcon(repertoire+"/Mine.GIF");
 		case CROIX:return new ImageIcon(repertoire+"/Croix.GIF");
 		case VIDE: return new ImageIcon(repertoire+"/Vide.GIF");
-		case DECOUVERTE: return new ImageIcon(repertoire+"/1.GIF");	
-		default : return new ImageIcon(repertoire+"/Mine.GIF");
+		case DECOUVERTE: return new ImageIcon(repertoire+"/"+nbMine+".GIF");	
+		default : return new ImageIcon(repertoire+"/Select.GIF");
 	}
 	
-		
 	}
+	
 	
 }

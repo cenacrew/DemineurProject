@@ -60,7 +60,7 @@ public class DFenetre extends JFrame {
 		/* partie centrale : damier */
 		if(centre!=null)
 			getContentPane().remove(centre);
-		centre = new DPanneau(this, nb_lgn, nb_col);
+		centre = new DPanneau(this.imageur, nb_lgn, nb_col);
 		
 		EcouteurSouris ecouteurSouris = new EcouteurSouris(this, partie);
 		centre.addMouseListener(ecouteurSouris);
@@ -86,7 +86,7 @@ public class DFenetre extends JFrame {
 	}
 
 	public ImageIcon getIcon(int i, int j) {
-		return DImageur.getIcon(partie.getEtatCase(i, j));
+		return DImageur.getIcon(partie.getEtatCase(i, j),imageur.getPartie().getMatrice()[i][j].getMinesAlentour());
 	}
 	
 	private void menu(){
