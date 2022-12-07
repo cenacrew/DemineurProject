@@ -12,6 +12,11 @@ public class DPartie {
 	
 	private EtatPartie ep;
 	
+	private static int NB_MINES_MIN = 10;
+	private static int NB_MINES_MAX = 665;
+	private static int DIMENSION_MIN = 9;
+	private static int DIMENSION_MAX = 25;
+	
 	public DPartie(int h, int l, int nb){
 		nouvellePartie(h,l,nb);
 		
@@ -36,6 +41,23 @@ public class DPartie {
 		ep = EtatPartie.PASFINI;
 		
 		
+	}
+	
+	public int getNbMinMines() {
+		return NB_MINES_MIN;
+	}
+
+
+	public int getNbMaxMines() {
+		return NB_MINES_MAX;
+	}
+
+	public int getDimMin() {
+		return DIMENSION_MIN;
+	}
+
+	public int getDimMax() {
+		return DIMENSION_MAX;
 	}
 	
 	public EtatCase getEtatCase(int i,int j) {
